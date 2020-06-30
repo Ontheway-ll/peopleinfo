@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 // import Home from '../views/Home.vue'
 import Home from '@/views/home'
 import Login from '@/views/login' // 简写形式
-
+// import first from '../components/home/first.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -14,7 +14,13 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: Home
+    component: Home,
+    children: [
+      // {
+      //   path: '',
+      //   component: first
+      // }
+    ]
   },
   {
     path: '/login',

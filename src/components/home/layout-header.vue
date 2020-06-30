@@ -31,7 +31,11 @@
              <div :class="{'selected':tab === 6,'testTitle':true}"  @click="toTab(6)">请奖管理
             <div class="nav"></div>
             </div>
-             <span @click="dengchu" class="guanli"><img src="../../assets/img/管理员.png" alt="">管理员</span>
+             <span @click="dengchu" class="guanli">
+               <img src="../../assets/img/管理员.png" alt="">
+               管理员
+               <img class="imgg" src="../../assets/img/注销.png" alt="">
+             </span>
         </div>
         <div class="container">
             <keep-alive>
@@ -78,7 +82,19 @@ export default {
       this.tab = index
     },
     dengchu () {
-      console.log(1)
+      this.$confirm('是否退出?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        window.localStorage.removeItem('user-token')
+        this.$router.push('/login')
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消'
+        })
+      })
     }
 
   }
@@ -87,6 +103,7 @@ export default {
 
 <style lang="less" scoped>
 .test {
+      user-select:none;
     // width: 100%;
     .testNav {
         // position: relative;
@@ -98,7 +115,7 @@ export default {
         color: #ffffff;
         background-color: #1476ff;
         .people{
-            flex: 3;
+            flex: 4;
           margin-left: 50px;
           font-size: 22px;
           font-weight: 700;
@@ -119,8 +136,9 @@ export default {
         }
         .testTitle {
           margin-left: -430px;
-            flex: 2;
+            flex: 3;
             // text-align: center;
+            cursor:pointer;
         }
         .selected {
             color: black;
@@ -134,6 +152,7 @@ export default {
               }
         }
         .guanli{
+          cursor:pointer;
           height: 28px;
           width: 28px;
           // margin-top: px;
@@ -143,6 +162,12 @@ export default {
             margin-left: -150px;
             vertical-align:middle;
             margin-right:5px;
+          }
+          .imgg{
+            margin-left: 5px;
+            height: 18px;
+             width: 18px;
+             margin-top: -2px;
           }
         }
 
