@@ -3,61 +3,10 @@
     <el-header>
       <layout-header></layout-header>
     </el-header>
-    <div class="seconebox">
-      <div class="boxx">
-        <!-- 主体部分左侧部分 -->
-        <div class="cebox">
-          <div class="heping">和平区</div>
-          <div class="lines"></div>
-
-          <div class="heping">河东区</div>
-          <div class="lines"></div>
-
-          <div class="heping">河西区</div>
-          <div class="lines"></div>
-
-          <div class="heping">河北区</div>
-          <div class="lines"></div>
-
-          <div class="heping">南开区</div>
-          <div class="lines"></div>
-
-          <div class="heping">红桥区</div>
-          <div class="lines"></div>
-
-          <div class="heping">东丽区</div>
-          <div class="lines"></div>
-
-          <div class="heping">津南区</div>
-          <div class="lines"></div>
-
-          <div class="heping">西青区</div>
-          <div class="lines"></div>
-
-          <div class="heping">北辰区</div>
-          <div class="lines"></div>
-
-          <div class="heping">宝坻区</div>
-          <div class="lines"></div>
-
-          <div class="heping">武清区</div>
-          <div class="lines"></div>
-
-          <div class="heping">宁河区</div>
-          <div class="lines"></div>
-
-          <div class="heping">静海区</div>
-          <div class="lines"></div>
-
-          <div class="heping">蓟州区</div>
-          <div class="lines"></div>
-
-          <div class="heping">滨海新区</div>
-          <div class="lines"></div>
-        </div>
-      </div>
-
-      <div class="youcezhuti">
+    <!-- 头部下面整体大盒子 -->
+    <div class="downbigbox">
+      <!-- 整体盒子头部 -->
+      <div class="headerbox">
         <!-- 主体上半部分卡片 -->
         <div class="bigdiv">
           <el-card class="firstimag" shadow="always">
@@ -124,8 +73,11 @@
             <div class="zongshu">800000</div>
           </el-card>
         </div>
-        <div class="xialia">
-          <!-- 数据统计部分 -->
+      </div>
+      <!-- 卡片下面整体大盒子 -->
+      <div class="carddownbox">
+        <!-- 下面大盒子左侧数据统计 -->
+        <div class="leftshuju">
           <el-card shadow="always" class="tongjibufen">
             <span class="num">数据统计</span>
             <el-dropdown class="year" @command="clickmenu" style="float: right; padding: 3px 0">
@@ -175,7 +127,9 @@
               </div>
             </div>
           </el-card>
-
+        </div>
+        <!-- 下面大盒子右侧的统计图 -->
+        <div class="zhuzhuangtu">
           <!-- 统计图 -->
           <el-card shadow="always" class="tongjitu">
             <div slot="header" class="clearfix">
@@ -185,34 +139,34 @@
           </el-card>
         </div>
       </div>
-    </div>
-
-     <!-- 侧面弹窗 -->
+       <!-- 侧面弹窗 -->
       <div class="tanchuang" :class="[isActive?'tanchuang':'tanchuangs']" @click="tapme">
         <img src="../../assets/img/右侧菜单_03.png" alt />
       </div>
       <div class="tanchu" :style="{display:activeDisplay}">
         <div class="kongbai" @click="diandian">...</div>
-        <div class="shi" :class="[isShow?'shi':'shis']" @click="myshi">市</div>
-        <div class="qu" @click="myqu">区</div>
+        <!-- <div class="shi"  @click="myshi">市</div> -->
+        <div class="qu" :class="[isShow?'qu':'qus']" @click="myqu">区</div>
         <div class="suo" @click="mysuo">所</div>
       </div>
+    </div>
   </div>
 </template>
 
 <script>
-import Echarts from 'echarts'
 import LayoutHeader from '@/components/home/layout-header'
+import Echarts from 'echarts'
+
 export default {
+  components: {
+    'layout-header': LayoutHeader
+  },
   data () {
     return {
       isActive: true, // 左箭头默认显示
       activeDisplay: 'none', // 右箭头默认隐藏
-      isShow: true// 市的颜色默认显示
+      isShow: true// 区的颜色默认显示
     }
-  },
-  components: {
-    'layout-header': LayoutHeader
   },
   methods: {
     // 点击日期下面的年
@@ -233,14 +187,11 @@ export default {
       this.activeDisplay = 'none'
       this.isActive = true
     },
-    // 点击市
-    myshi () {
-    },
     // 点击区
     myqu () {
       console.log(3)
       this.isShow = false
-      this.$router.push('/qu')
+    //   this.$router.push('/qu')
     },
     // 点击所
     mysuo () {
@@ -271,14 +222,14 @@ export default {
       },
       grid: {
         left: '10%',
-        right: '10%',
+        right: '5%',
         bottom: '15%',
-        top: '20%',
+        top: '15%',
         // padding:'0 0 10 0',
         containLabel: true
       },
       legend: { // 图例组件，颜色和名字
-        right: '5%',
+        right: '1%',
         top: '10%',
         itemGap: 16,
         itemWidth: 20,
@@ -429,49 +380,29 @@ export default {
 </script>
 
 <style lang="less" scoped >
-.seconebox {
-  display: flex;
-  .boxx {
-    // display: flex;
-    height: 840px;
-    // 主体部分左侧部分样式
-    .cebox {
-      user-select: none;
-      cursor: pointer;
-      height: 830px;
-      width: 250px;
-      background-color: #3c20fe;
-      margin-left: 40px;
-      .heping {
-        height: 50px;
-        color: #ffffff;
-        text-align: center;
-        line-height: 50px;
-        background-color: #3c20fe;
-      }
-      // heping:hover{
-      //     color: red;
-      //     background-color: blue;
-      // }
-      .lines {
-        height: 1px;
-        border-top: solid #ffffff 1px;
-      }
-    }
-  }
-  .youcezhuti {
+// 头部下面整体大盒子
+.downbigbox {
+  width: 1840px;
+  height: 850px;
+  background-color: #eaf2f8;
+  margin-left: 40px;
+  // 整体盒子头部
+  .headerbox {
+    width: 1760px;
+    height: 250px;
+    // background-color: #ccc;
+    margin-left: 40px;
+    padding-top: 10px;
     // 主体上半部分卡片
     .bigdiv {
       display: flex;
       flex-wrap: wrap;
-      width: 1550px;
-      height: 260px;
-      background-color: #eaf2f8;
-      margin: 20px;
+      width: 1760px;
+      height: 250px;
       .firstimag {
-        margin-right: 8px;
-        height: 120px;
-        width: 300px;
+        margin-right: 20px;
+        height: 110px;
+        width: 320px;
         .iimg {
           width: 85px;
           height: 85px;
@@ -493,16 +424,24 @@ export default {
         }
       }
     }
-    .xialia {
-      display: flex;
+  }
+  //   卡片下面整体大盒子
+  .carddownbox {
+    display: flex;
+    width: 1760px;
+    height: 580px;
+    // background-color: coral;
+    margin-left: 40px;
+    // 面大盒子左侧数据统计
+    .leftshuju {
       // 数据统计部分
       .tongjibufen {
-        margin-left: 20px;
+        // margin-left: 20px;
         display: flex;
-        width: 300px;
-        height: 530px;
+        width: 320px;
+        height: 580px;
         .year {
-          margin-left: 120px;
+          margin-left: 140px;
           cursor: pointer;
         }
         .num {
@@ -514,7 +453,7 @@ export default {
           width: 200px;
           height: 110px;
           // background-color: #ccc ;
-          margin-top: 10px;
+          margin-top: 20px;
           .everyone {
             margin: 10px;
             display: flex;
@@ -590,26 +529,28 @@ export default {
           }
         }
       }
-      // 统计图
+    }
+    .zhuzhuangtu{
+
+     // 统计图
       .tongjitu {
-        width: 1225px;
-        height: 530px;
+          border-radius: 10px;
+        width: 1417px;
+        height: 578px;
         margin-left: 20px;
         .echarts{
-           width: 1100px;
+           width: 1300px;
            height: 530px;
         }
       }
     }
   }
-
-}
-// 侧边弹窗
+   // 侧边弹窗
   .tanchuang {
     cursor: pointer;
     position: absolute;
     top: 370px;
-    right: 50px;
+    right: 42px;
     width: 23px;
     height: 98px;
     img {
@@ -626,21 +567,21 @@ export default {
     height: 220px;
     position: absolute;
     top: 310px;
-    right: 20px;
+    right: 12px;
     background-image: url(../../assets/img/右侧菜单栏放_03.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 73px 302px;
-    .shi {
-      cursor: pointer;
-      user-select: none;
-      margin-left: 58px;
-      font-size: 33px;
-      font-weight: 700;
-      margin-top: 20px;
-      color: #ff9f41;
-    }
-    .shis {
+    // .shi {
+    //   cursor: pointer;
+    //   user-select: none;
+    //   margin-left: 58px;
+    //   font-size: 33px;
+    //   font-weight: 700;
+    //   margin-top: 20px;
+    //   color: #ff9f41;
+    // }
+    .qus {
       cursor: pointer;
       user-select: none;
       margin-left: 58px;
@@ -664,17 +605,17 @@ export default {
       font-size: 33px;
       font-weight: 700;
       margin-top: 20px;
-      color: #ffffff;
+      color: #ff9f3d;
     }
     .suo {
       margin-left: 58px;
       font-size: 33px;
       font-weight: 700;
-      margin-top: 20px;
+      margin-top: 80px;
       color: #ffffff;
       cursor: pointer;
       user-select: none;
     }
   }
-
+}
 </style>

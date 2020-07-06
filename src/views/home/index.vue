@@ -182,10 +182,12 @@ export default {
     myqu () {
       console.log(3)
       this.isShow = false
+      this.$router.push('/qu')
     },
     // 点击所
     mysuo () {
       console.log(4)
+      this.$router.push('/suo')
     }
   },
   mounted () {

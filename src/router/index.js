@@ -5,6 +5,8 @@ import Home from '@/views/home'
 import Login from '@/views/login' // 简写形式
 import Nav from '@/views/nav' // 简写形式
 import Navl from '@/views/navl' // 简写形式
+import Qu from '@/views/qu' // 简写形式
+import Suo from '@/views/suo' // 简写形式
 
 // import indexsuo from '../views/nav/indexsuo.vue'
 Vue.use(VueRouter)
@@ -37,6 +39,14 @@ const routes = [
   {
     path: '/navl',
     component: Navl
+  },
+  {
+    path: '/qu',
+    component: Qu
+  },
+  {
+    path: '/suo',
+    component: Suo
   }
   // {
   //   path: '/about',
