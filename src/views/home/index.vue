@@ -176,18 +176,19 @@ export default {
     },
     // 点击市
     myshi () {
-      this.$router.push('/nav')
+      // this.$router.push('/nav')
     },
     // 点击区
     myqu () {
       console.log(3)
       this.isShow = false
-      this.$router.push('/qu')
+      this.$router.push('/nav')
     },
     // 点击所
     mysuo () {
       console.log(4)
-      this.$router.push('/suo')
+      // this.$router.push('/suo')
+      this.$router.push('/navl')
     }
   },
   mounted () {
@@ -577,7 +578,7 @@ export default {
       margin-left: 34px;
       font-size: 16px;
       margin-top: 94px;
-      color: #ffffff;
+      color: #a1a1a1;
     }
     .qu {
       cursor: pointer;

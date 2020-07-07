@@ -196,7 +196,7 @@ export default {
     // 点击所
     mysuo () {
       console.log(4)
-      this.$router.push('/navl')
+      this.$router.push('/suo')
     }
   },
   mounted () {

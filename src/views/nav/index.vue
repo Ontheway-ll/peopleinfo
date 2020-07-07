@@ -193,7 +193,7 @@
       </div>
       <div class="tanchu" :style="{display:activeDisplay}">
         <div class="kongbai" @click="diandian">...</div>
-        <div class="shi" :class="[isShow?'shi':'shis']" @click="myshi">市</div>
+        <div class="shi"  @click="myshi">市</div>
         <div class="qu" @click="myqu">区</div>
         <div class="suo" @click="mysuo">所</div>
       </div>
@@ -207,8 +207,8 @@ export default {
   data () {
     return {
       isActive: true, // 左箭头默认显示
-      activeDisplay: 'none', // 右箭头默认隐藏
-      isShow: true// 市的颜色默认显示
+      activeDisplay: 'none' // 右箭头默认隐藏
+      // isShow: true// 市的颜色默认显示
     }
   },
   components: {
@@ -235,17 +235,18 @@ export default {
     },
     // 点击市
     myshi () {
+      this.$router.push('/home')
     },
     // 点击区
     myqu () {
       console.log(3)
-      this.isShow = false
+      // this.isShow = false
       this.$router.push('/qu')
     },
     // 点击所
     mysuo () {
       console.log(4)
-      this.$router.push('/navl')
+      this.$router.push('/suo')
     }
   },
   mounted () {
@@ -638,17 +639,17 @@ export default {
       font-size: 33px;
       font-weight: 700;
       margin-top: 20px;
-      color: #ff9f41;
-    }
-    .shis {
-      cursor: pointer;
-      user-select: none;
-      margin-left: 58px;
-      font-size: 33px;
-      font-weight: 700;
-      margin-top: 20px;
       color: #ffffff;
     }
+    // .shis {
+    //   cursor: pointer;
+    //   user-select: none;
+    //   margin-left: 58px;
+    //   font-size: 33px;
+    //   font-weight: 700;
+    //   margin-top: 20px;
+    //   color: #ffffff;
+    // }
     .kongbai {
       position: absolute;
       user-select: none;

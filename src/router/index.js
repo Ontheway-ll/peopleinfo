@@ -7,6 +7,7 @@ import Nav from '@/views/nav' // 简写形式
 import Navl from '@/views/navl' // 简写形式
 import Qu from '@/views/qu' // 简写形式
 import Suo from '@/views/suo' // 简写形式
+import User from '@/views/user' // 简写形式
 
 // import indexsuo from '../views/nav/indexsuo.vue'
 Vue.use(VueRouter)
@@ -47,6 +48,10 @@ const routes = [
   {
     path: '/suo',
     component: Suo
+  },
+  {
+    path: '/user',
+    component: User
   }
   // {
   //   path: '/about',
